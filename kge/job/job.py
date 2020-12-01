@@ -197,3 +197,8 @@ class TrainingOrEvaluationJob(Job):
         # modified by the hooks defined above. The traces are logged only after the
         # corresponding hooks have been executed. The traces are then cleared.
         self.current_trace: Dict[str, Dict[str, Any]] = {"batch": None, "epoch": None}
+
+        from kge.job.external_tracking import ExternalTracker
+        external_trackers = config.get("job.external_tracking")
+        for tracker in external_trackers:
+            ExternalTracker.create(config, self)
