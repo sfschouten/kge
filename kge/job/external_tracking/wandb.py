@@ -28,6 +28,7 @@ class WeightsAndBiases(ExternalTracker):
             group = group,
             job_type = job_type,
             id = job_id,
+            config = job.config.options,
         )
 
     def _log(self, job):
