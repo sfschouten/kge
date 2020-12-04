@@ -27,9 +27,9 @@ class WeightsAndBiases(ExternalTracker):
             project = project,
             group = group,
             job_type = job_type,
-            id = job_id,
             config = job.config.options,
         )
+        job.config.set("job.external_tracking.wandb.id", wandb.run.id)
 
     def _log(self, job):
         to_log = {}
